@@ -25,7 +25,7 @@ def create_character(name, character_class):
         char_info = {'name': name, 'class': character_class, 'level': level, 'strength': strength, 'magic': magic,
                      'health': health, 'gold': gold}
     else:
-        return None
+        return 'Invalid Class'
     char_info = {
         "name": name,
         "class": character_class,
@@ -87,7 +87,18 @@ def calculate_stats(character_class, level):
     pass
 
 def save_character(character, filename):
-    """
+    with open(filename, 'w') as f:
+        f.write(f'Character Name: {character["name"]}\n')
+        f.write(f'Character Class: {character["class"]}\n\n')
+        f.write(f'Character Level: {character["level"]}\n\n')
+        f.write(f'Character Strength: {character["strength"]}\n\n')
+        f.write(f'Character Magic: {character["magic"]}\n\n')
+        f.write(f'Character Health: {character["health"]}\n\n')
+        f.write(f'Character Gold: {character["gold"]}\n\n')
+    return True
+
+
+"""
     Saves character to text file in specific format
     Returns: True if successful, False if error occurred
     
@@ -145,7 +156,7 @@ def level_up(character):
 if __name__ == "__main__":
     print("=== CHARACTER CREATOR ===")
     print("Test your functions here!")
-    level = int(1)
+    level = int()
     name = input("What is your name?\n")
     character_class = input("Choose your class: Warrior/Mage/Rogue/Cleric\n")
     character = create_character(name, character_class)
