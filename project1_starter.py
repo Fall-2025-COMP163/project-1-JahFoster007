@@ -1,14 +1,38 @@
 """
 COMP 163 - Project 1: Character Creator & Saving/Loading
-Name: [Your Name Here]
-Date: [Date]
+Name: [Jahiem Foster]
+Date: [26 October 2025]
 
 AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
 """
+name = input("What is your name?\n")
+character_class = input("Choose your class: Warrior/Mage/Rogue/Cleric\n")
 
 def create_character(name, character_class):
-    """
+    if character_class == 'Warrior':
+        level, strength, magic, health, gold = 1, 14, 5, 12, 100
+        char_info = {'Name': name, 'Class': character_class, 'Level': level, 'Strength': strength, 'Magic': magic,
+                     'Health': health, 'Gold': gold}
+    elif character_class == 'Mage':
+        level, strength, magic, health, gold = 1, 4, 14, 8, 100
+        char_info = {'Name': name, 'Class': character_class, 'Level': level, 'Strength': strength, 'Magic': magic,
+                     'Health': health, 'Gold': gold}
+    elif character_class == 'Rogue':
+        level, strength, magic, health, gold = 1, 8, 9, 6, 100
+        char_info = {'Name': name, 'Class': character_class, 'Level': level, 'Strength': strength, 'Magic': magic,
+                     'Health': health, 'Gold': gold}
+    elif character_class == 'Cleric':
+        level, strength, magic, health, gold = 1, 8, 12, 14, 100
+        char_info = {'Name': name, 'Class': character_class, 'Level': level, 'Strength': strength, 'Magic': magic,
+                     'Health': health, 'Gold': gold}
+    else:
+        print("Invalid Class Selected")
+    return char_info
+character =create_character(name, character_class)
+print(character)
+
+"""
     Creates a new character dictionary with calculated stats
     Returns: dictionary with keys: name, class, level, strength, magic, health, gold
     
@@ -18,7 +42,7 @@ def create_character(name, character_class):
     """
     # TODO: Implement this function
     # Remember to use calculate_stats() function for stat calculation
-    pass
+pass
 
 def calculate_stats(character_class, level):
     """
