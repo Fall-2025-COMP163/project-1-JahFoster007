@@ -52,20 +52,20 @@ pass
 def calculate_stats(character_class, level):
     if character_class == "Warrior":
         strength = 10 + (level * 4)
-        magic = 3 + (level * 1)
-        health = 12 + (level * 3)
+        magic = 4 + (level * 1)
+        health = 9 + (level * 3)
     elif character_class == "Mage":
         strength = 3 + (level * 1)
         magic = 10 + (level * 4)
-        health = 8 + (level * 2)
+        health = 6 + (level * 2)
     elif character_class == "Rogue":
         strength = 6 + (level * 2)
-        magic = 6 + (level * 2)
-        health = 10 + (level * 2)
+        magic = 7 + (level * 2)
+        health = 4 + (level * 2)
     elif character_class == "Cleric":
-        strength = 5 + (level * 2)
+        strength = 6 + (level * 2)
         magic = 9 + (level * 3)
-        health = 11 + (level * 2)
+        health = 11 + (level * 3)
     else:
         # If invalid class
         return (0, 0, 0)
@@ -145,10 +145,13 @@ def level_up(character):
 if __name__ == "__main__":
     print("=== CHARACTER CREATOR ===")
     print("Test your functions here!")
+    level = int(1)
     name = input("What is your name?\n")
     character_class = input("Choose your class: Warrior/Mage/Rogue/Cleric\n")
     character = create_character(name, character_class)
     print(character)
+    character_stats = calculate_stats(character_class, level)
+    print(character_stats)
 
     # Example usage:
     # char = create_character("TestHero", "Warrior")
