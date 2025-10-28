@@ -6,31 +6,27 @@ Date: [26 October 2025]
 AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
 """
-name = input("What is your name?\n")
-character_class = input("Choose your class: Warrior/Mage/Rogue/Cleric\n")
 
 def create_character(name, character_class):
     if character_class == 'Warrior':
         level, strength, magic, health, gold = 1, 14, 5, 12, 100
-        char_info = {'Name': name, 'Class': character_class, 'Level': level, 'Strength': strength, 'Magic': magic,
-                     'Health': health, 'Gold': gold}
+        char_info = {'name': name, 'class': character_class, 'level': level, 'strength': strength, 'magic': magic,
+                     'health': health, 'gold': gold}
     elif character_class == 'Mage':
         level, strength, magic, health, gold = 1, 4, 14, 8, 100
-        char_info = {'Name': name, 'Class': character_class, 'Level': level, 'Strength': strength, 'Magic': magic,
-                     'Health': health, 'Gold': gold}
+        char_info = {'name': name, 'class': character_class, 'level': level, 'strength': strength, 'magic': magic,
+                     'health': health, 'gold': gold}
     elif character_class == 'Rogue':
         level, strength, magic, health, gold = 1, 8, 9, 6, 100
-        char_info = {'Name': name, 'Class': character_class, 'Level': level, 'Strength': strength, 'Magic': magic,
-                     'Health': health, 'Gold': gold}
+        char_info = {'name': name, 'class': character_class, 'level': level, 'strength': strength, 'magic': magic,
+                     'health': health, 'gold': gold}
     elif character_class == 'Cleric':
         level, strength, magic, health, gold = 1, 8, 12, 14, 100
-        char_info = {'Name': name, 'Class': character_class, 'Level': level, 'Strength': strength, 'Magic': magic,
-                     'Health': health, 'Gold': gold}
+        char_info = {'name': name, 'class': character_class, 'level': level, 'strength': strength, 'magic': magic,
+                     'health': health, 'gold': gold}
     else:
         print("Invalid Class Selected")
     return char_info
-character =create_character(name, character_class)
-print(character)
 
 """
     Creates a new character dictionary with calculated stats
@@ -45,6 +41,28 @@ print(character)
 pass
 
 def calculate_stats(character_class, level):
+    if character_class == "Warrior":
+        strength = 10 + (level * 4)
+        magic = 3 + (level * 1)
+        health = 12 + (level * 3)
+    elif character_class == "Mage":
+        strength = 3 + (level * 1)
+        magic = 10 + (level * 4)
+        health = 8 + (level * 2)
+    elif character_class == "Rogue":
+        strength = 6 + (level * 2)
+        magic = 6 + (level * 2)
+        health = 10 + (level * 2)
+    elif character_class == "Cleric":
+        strength = 5 + (level * 2)
+        magic = 9 + (level * 3)
+        health = 11 + (level * 2)
+    else:
+        # If invalid class
+        return (0, 0, 0)
+
+    return (strength, magic, health)
+
     """
     Calculates base stats based on class and level
     Returns: tuple of (strength, magic, health)
@@ -118,7 +136,11 @@ def level_up(character):
 if __name__ == "__main__":
     print("=== CHARACTER CREATOR ===")
     print("Test your functions here!")
-    
+    name = input("What is your name?\n")
+    character_class = input("Choose your class: Warrior/Mage/Rogue/Cleric\n")
+    character = create_character(name, character_class)
+    print(character)
+
     # Example usage:
     # char = create_character("TestHero", "Warrior")
     # display_character(char)
