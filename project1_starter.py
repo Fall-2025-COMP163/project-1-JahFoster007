@@ -25,7 +25,16 @@ def create_character(name, character_class):
         char_info = {'name': name, 'class': character_class, 'level': level, 'strength': strength, 'magic': magic,
                      'health': health, 'gold': gold}
     else:
-        print("Invalid Class Selected")
+        return None
+    char_info = {
+        "name": name,
+        "class": character_class,
+        "level": level,
+        "strength": strength,
+        "magic": magic,
+        "health": health,
+        "gold": gold
+    }
     return char_info
 
 """
