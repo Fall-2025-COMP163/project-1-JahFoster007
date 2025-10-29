@@ -7,15 +7,18 @@ AI Usage: [Document any AI assistance used]
 AI helped with fixing multiple indentation errors
 """
 
+
 def create_character(name, character_class):
+    level = 1
+    gold = 100
     if character_class == 'Warrior':
-        level, strength, magic, health, gold = 1, 14, 5, 12, 100
+        strength, magic, health = calculate_stats(character_class, level)
     elif character_class == 'Mage':
-        level, strength, magic, health, gold = 1, 4, 14, 8, 100
+        strength, magic, health = calculate_stats(character_class, level)
     elif character_class == 'Rogue':
-        level, strength, magic, health, gold = 1, 8, 9, 6, 100
+        strength, magic, health = calculate_stats(character_class, level)
     elif character_class == 'Cleric':
-        level, strength, magic, health, gold = 1, 8, 12, 14, 100
+        strength, magic, health = calculate_stats(character_class, level)
     else:
         return None
     return {
@@ -39,7 +42,8 @@ char = create_character("Aria", "Mage")
 """
 # TODO: Implement this function
 # Remember to use calculate_stats() function for stat calculation
-pass
+
+
 
 def calculate_stats(character_class, level):
     if character_class == "Warrior":
@@ -79,7 +83,99 @@ Design your own formulas! Ideas:
 # Return a tuple: (strength, magic, health)
 pass
 
+import os
 def save_character(character, filename):
     with open(filename, 'w') as f:
         f.write(f'Character Name: {character["name"]}\n')
-        f.write
+        f.write(f'Character Class: {character["class"]}\n')
+        f.write(f'Character Level: {character["level"]}\n')
+        f.write(f'Character Strength: {character["strength"]}\n')
+        f.write(f'Character Magic: {character["magic"]}\n')
+        f.write(f'Character Health: {character["health"]}\n')
+        f.write(f'Character Gold: {character["gold"]}\n')
+    return True
+
+
+"""
+    Saves character to text file in specific format
+    Returns: True if successful, False if error occurred
+
+    Required file format:
+    Character Name: [name]
+    Class: [class]
+    Level: [level]
+    Strength: [strength]
+    Magic: [magic]
+    Health: [health]
+    Gold: [gold]
+    """
+# TODO: Implement this function
+# Remember to handle file errors gracefully
+
+
+
+def load_character(filename):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+    return lines
+
+    """
+    Loads character from text file
+    Returns: character dictionary if successful, None if file not found
+    """
+    # TODO: Implement this function
+    # Remember to handle file not found errors
+    pass
+
+
+def display_character(character):
+    """
+    Prints formatted character sheet
+    Returns: None (prints to console)
+
+    Example output:
+    === CHARACTER SHEET ===
+    Name: Aria
+    Class: Mage
+    Level: 1
+    Strength: 5
+    Magic: 15
+    Health: 80
+    Gold: 100
+    """
+    # TODO: Implement this function
+    pass
+
+
+def level_up(character):
+    """
+    Increases character level and recalculates stats
+    Modifies the character dictionary directly
+    Returns: None
+    """
+    # TODO: Implement this function
+    # Remember to recalculate stats for the new level
+    pass
+
+
+# Main program area (optional - for testing your functions)
+if __name__ == "__main__":
+    print("=== CHARACTER CREATOR ===")
+    print("Test your functions here!")
+    level = int(1)
+    name = input("What is your name?\n")
+    character_class = input("Choose your class: Warrior/Mage/Rogue/Cleric\n")
+    character = create_character(name, character_class)
+    print(character)
+    character_stats = calculate_stats(character_class, level)
+    print(character_stats)
+    save = save_character(character, name)
+    load = load_character(name)
+    print(save)
+    print(load)
+
+    # Example usage:
+    # char = create_character("TestHero", "Warrior")
+    # display_character(char)
+    # save_character(char, "my_character.txt")
+    # loaded = load_character("my_character.txt")
