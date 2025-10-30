@@ -6,8 +6,10 @@ Date: [26 October 2025]
 AI Usage: [Document any AI assistance used]
 AI helped with fixing multiple indentation errors
 """
-
-
+# -------------------
+# Function 1
+# -------------------
+#Creates a character and assigns stats based on class chosen
 def create_character(name, character_class):
     level = 1
     gold = 100
@@ -43,8 +45,10 @@ char = create_character("Aria", "Mage")
 # TODO: Implement this function
 # Remember to use calculate_stats() function for stat calculation
 
-
-
+# -------------------
+# Function 2
+# -------------------
+#Calculates characters stats and increases them by a set amount when character levels up
 def calculate_stats(character_class, level):
     if character_class == "Warrior":
         strength = 10 + (level * 4)
@@ -82,9 +86,20 @@ Design your own formulas! Ideas:
 # TODO: Implement this function
 # Return a tuple: (strength, magic, health)
 pass
-
-import os
+# -------------------
+# Function 3
+# -------------------
+#Saves your character file
 def save_character(character, filename):
+    import os
+
+    # Check valid input
+    if not isinstance(character, dict) or not filename:
+        directory = os.path.dirname(filename)
+
+        if directory and not os.path.exists(directory):
+            return False
+
     with open(filename, 'w') as f:
         f.write(f'Character Name: {character["name"]}\n')
         f.write(f'Character Class: {character["class"]}\n')
@@ -113,11 +128,34 @@ def save_character(character, filename):
 # Remember to handle file errors gracefully
 
 
-
+# -------------------
+# Function 4
+# -------------------
 def load_character(filename):
+    import os
+    if not os.path.exists(filename):
+        print(f"Error: File '{filename}' not found")
+        return None
+    load = {}
     with open(filename, 'r') as f:
-        lines = f.readlines()
-    return lines
+        for line in f:
+            if ':' not in line:
+                continue
+            key, value = line.strip().split(':',1)
+            key = key.lower().replace('character', '').strip()
+            value = value.strip()
+            if value.isdigit():
+                value = int(value)
+            load[key] = value
+
+    return load
+
+
+
+
+
+
+
 
     """
     Loads character from text file
@@ -127,8 +165,24 @@ def load_character(filename):
     # Remember to handle file not found errors
     pass
 
-
+# -------------------
+# Function 5
+# -------------------
 def display_character(character):
+    if not isinstance(character, dict):
+        print("Invalid character data.")
+        return
+
+    print("\n=== CHARACTER SHEET ===")
+    print(f"Name: {character['name']}")
+    print(f"Class: {character['class']}")
+    print(f"Level: {character['level']}")
+    print(f"Strength: {character['strength']}")
+    print(f"Magic: {character['magic']}")
+    print(f"Health: {character['health']}")
+    print(f"Gold: {character['gold']}")
+
+
     """
     Prints formatted character sheet
     Returns: None (prints to console)
@@ -146,8 +200,16 @@ def display_character(character):
     # TODO: Implement this function
     pass
 
-
+# -------------------
+# Function 6
+# -------------------
+#character levels up and stats increase at a set value every level
 def level_up(character):
+    character['level'] += 1
+
+
+
+
     """
     Increases character level and recalculates stats
     Modifies the character dictionary directly
@@ -166,13 +228,14 @@ if __name__ == "__main__":
     name = input("What is your name?\n")
     character_class = input("Choose your class: Warrior/Mage/Rogue/Cleric\n")
     character = create_character(name, character_class)
-    print(character)
-    character_stats = calculate_stats(character_class, level)
-    print(character_stats)
-    save = save_character(character, name)
-    load = load_character(name)
-    print(save)
-    print(load)
+    filename = f'{name}.txt'
+    save = save_character(character, filename)
+    loaded = load_character(filename)
+    display = display_character(loaded)
+    level_increase = level_up(loaded)
+    print(display)
+    print(level_increase)
+
 
     # Example usage:
     # char = create_character("TestHero", "Warrior")
