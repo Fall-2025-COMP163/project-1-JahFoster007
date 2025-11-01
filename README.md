@@ -96,4 +96,27 @@ Modifying protected files will result in automatic academic integrity violation
 
 Implementation (70%): Function correctness, file operations, error handling
 
-Interview (30%): Code explanation and live coding challenge
+
+•	Game Concept: What's your RPG world about?
+    -my RPG world is about guilds and dungeons. Guilds and dungeons are spread across countries 
+    each with members of different classes that make up the teams tasked with clearing the dungeons. 
+    very simple and straight forward concept
+    
+
+•	Design Choices: Why did you choose your stat formulas?
+    -I chose my stat formula so everything would be simple and automatic. 
+    Each class' stats are increased by a set amount each time they level up.
+
+•	Bonus Creative Features: Did you add anything unique?
+    -I did not add any bonus features to my project
+    
+•	AI Usage: What AI assistance did you use and where?
+    -AI was used to fix many indentation errors I ran into, most of which were related to docstrings.
+    
+•	How to Run: Clear instructions for testing your code
+    -When you start the program it will ask you to choose your name then your class.
+    -The program will then display your character info which consists of your character name, class, and the associated class stat values.
+    -The code I have written will automatically level your character up a couple of times to show the increased stats associated with the current level.
+    -save_character and load_character functions save the information to a file and load the information from said file respectively.
+
+
